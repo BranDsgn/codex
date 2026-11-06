@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -14,13 +13,11 @@ import {
   FlowArrow,
   GearSix,
   House,
-  Lightning,
-  LinkSimple,
   List,
   LockKey,
   MagnifyingGlass,
   Moon,
-  Plus,
+  Path,
   Receipt,
   SignOut,
   Sun,
@@ -32,25 +29,17 @@ import {
   Waves,
   Wrench,
   X,
-  Path,
 } from "@phosphor-icons/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "./api";
-import { emptyData, dateLabel, match } from "./types";
-import type { Context, Data, Edit, Entity, Page, Row } from "./types";
-import {
-  Badge,
-  Button,
-  Drawer,
-  Editor,
-  Empty,
-  IconButton,
-  SearchInput,
-} from "./ui";
-import { prepareValues } from "./forms";
-import { Dispatch } from "./Dispatch";
-import { Pages } from "./Pages";
 import { CustomerDetail, JobDetail } from "./Details";
+import { Dispatch } from "./Dispatch";
+import { prepareValues } from "./forms";
+import { Pages } from "./Pages";
 import { Portal } from "./Portal";
+import type { Context, Data, Edit, Entity, Page, Row } from "./types";
+import { dateLabel, emptyData, match } from "./types";
+import { Badge, Button, Drawer, Editor, Empty, SearchInput } from "./ui";
 
 const groups = [
   {
@@ -147,6 +136,20 @@ function Workspace() {
       localStorage.setItem("current-theme", theme);
     } catch {}
   }, [theme]);
+  useEffect(() => {
+    if (!session?.signedIn) return;
+    const update = () => {
+      if (document.visibilityState === "visible") {
+        void refresh().catch((e) => notify(e.message, true));
+      }
+    };
+    window.addEventListener("focus", update);
+    const timer = setInterval(update, 60000);
+    return () => {
+      window.removeEventListener("focus", update);
+      clearInterval(timer);
+    };
+  }, [session?.signedIn, refresh, notify]);
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {

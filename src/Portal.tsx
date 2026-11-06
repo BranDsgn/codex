@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
 import {
-  Waves,
+  ArrowRight,
   CalendarDots,
   CheckCircle,
-  ArrowRight,
   Drop,
-  Receipt,
   EnvelopeSimple,
+  Receipt,
   WarningCircle,
-  Sun,
-  Moon,
+  Waves,
 } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
 import { api } from "./api";
+import { dateLabel, money, time } from "./types";
 import { Badge, Button, Empty, Status } from "./ui";
-import { dateLabel, time, money } from "./types";
 export function Portal({ token }: { token: string }) {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState("");

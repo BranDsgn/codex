@@ -1,16 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import type { ReactNode, FormEvent } from "react";
 import {
-  X,
-  ArrowUpRight,
-  Plus,
-  MagnifyingGlass,
   CheckCircle,
   Clock,
+  MagnifyingGlass,
+  Plus,
   WarningCircle,
   WaveSine,
+  X,
 } from "@phosphor-icons/react";
-import type { Edit, Row } from "./types";
+import type { FormEvent, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { Edit } from "./types";
 
 export function Badge({
   children,

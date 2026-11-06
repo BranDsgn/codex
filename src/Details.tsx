@@ -1,23 +1,22 @@
-import { useState } from "react";
 import {
   ArrowUpRight,
   CheckCircle,
   ClipboardText,
   Drop,
-  EnvelopeSimple,
+  Flask,
+  LinkSimple,
   NotePencil,
   Plus,
+  Receipt,
   WarningCircle,
   Wrench,
-  LinkSimple,
-  Flask,
-  Receipt,
 } from "@phosphor-icons/react";
-import { Button, Drawer, Empty, Status, Table, Badge } from "./ui";
-import { money, time, dateLabel, invoiceTotal } from "./types";
-import type { Context, Row } from "./types";
-import { customerForm, jobForm, readingForm, invoiceForm } from "./forms";
+import { useState } from "react";
 import { api } from "./api";
+import { customerForm, invoiceForm, jobForm, readingForm } from "./forms";
+import type { Context } from "./types";
+import { dateLabel, invoiceTotal, money, time } from "./types";
+import { Badge, Button, Drawer, Status } from "./ui";
 
 export function JobDetail({
   ctx,

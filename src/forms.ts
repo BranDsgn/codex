@@ -1,4 +1,4 @@
-import type { Context, Row, Edit, Field } from "./types";
+import type { Context, Edit, Field, Row } from "./types";
 export const options = (values: string[]) =>
   values.map((value) => ({ value, label: value }));
 const select = (key: string, label: string, values: string[]): Field => ({

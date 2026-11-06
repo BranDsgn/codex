@@ -1,19 +1,18 @@
-import { useRef, useState } from "react";
-import Papa from "papaparse";
 import {
   ArrowRight,
   CheckCircle,
   Database,
   DownloadSimple,
   FileCsv,
+  ShieldCheck,
   UploadSimple,
   WarningCircle,
-  ShieldCheck,
-  X,
 } from "@phosphor-icons/react";
-import type { Context } from "./types";
-import { Badge, Button, Empty, Heading, Table } from "./ui";
+import Papa from "papaparse";
+import { useRef, useState } from "react";
 import { api } from "./api";
+import type { Context } from "./types";
+import { Badge, Button, Heading, Table } from "./ui";
 type ImportRow = Record<string, string>;
 const mappings = [
   ["name", "Customer name"],
